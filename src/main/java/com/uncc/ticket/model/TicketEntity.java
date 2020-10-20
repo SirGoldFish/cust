@@ -83,7 +83,6 @@ public class TicketEntity {
     public UsersEntity getUsers() {
         return users;
     }
-
     public void setUsers(UsersEntity users) {
         this.users = users;
     }

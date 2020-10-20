@@ -20,8 +20,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
                 .passwordEncoder(new BCryptPasswordEncoder())
-        .usersByUsernameQuery("select email,password,enabled from users where email=?")
-        .authoritiesByUsernameQuery("select email, authority from users where email=?");
+                .usersByUsernameQuery("select email,password,enabled from users where email=?")
+                .authoritiesByUsernameQuery("select email, authority from users where email=?");
     }
 
     @Override
@@ -29,6 +29,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests().antMatchers("/register","/css/**","/js/**").permitAll()
                 .anyRequest().authenticated().and()
-        .formLogin().loginPage("/login").usernameParameter("email").permitAll().and().logout().permitAll();
+                .formLogin().loginPage("/login").usernameParameter("email").permitAll().and().logout().permitAll();
     }
 }
